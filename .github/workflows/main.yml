@@ -1,18 +1,13 @@
-
-name: Hello World Workflow
+name: Demo Pipeline
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Run a command
-        run: echo "Hello World!"
-      - name: Print success message
-        run: echo "Workflow completed successfully!"
+      - uses: actions/checkout@v3
+      - name: Show commit message
+        run: echo "${{ github.event.head_commit.message }}"
